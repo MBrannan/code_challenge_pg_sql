@@ -7,17 +7,20 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js"
   },
-  "author": "kris@primeacademy.io",
+  "author": "mbrannan",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kdszafranski/code_challenge_pg_sql.git"
+    "url": "git+https://github.com/mbrannan/code_challenge_pg_sql.git"
   },
   "bugs": {
     "url": "https://github.com/kdszafranski/code_challenge_pg_sql/issues"
   },
   "homepage": "https://github.com/kdszafranski/code_challenge_pg_sql#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "pg": "^6.1.0"
   }
 }
