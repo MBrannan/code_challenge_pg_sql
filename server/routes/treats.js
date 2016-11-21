@@ -36,7 +36,6 @@ router.post('/', function(req, res) {
       console.log('Connection error ', err);
       res.sendStatus(500);
     }
-    console.log(newTreat.pic);
     client.query(
       'INSERT INTO treats(name, description, pic) VALUES ($1, $2, $3)',
       [newTreat.name, newTreat.description, newTreat.url],
@@ -56,4 +55,29 @@ router.post('/', function(req, res) {
   });
 });
 
+router.get('/:name', function(req, res) {
+  var treatSelect = req.params.name;
+  console.log('treat to select ', treatSelect);
+
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+      res.sendStatus(500);
+    }
+
+    client.query(
+      'SELECT * FROM treats WHERE name ILIKE $1;',
+      [treatSelect],
+      function(err, result) {
+        done();
+
+        if(err) {
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      }
+    );
+  });
+});
 module.exports = router;
